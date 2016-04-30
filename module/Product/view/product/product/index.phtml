@@ -1,0 +1,40 @@
+<?php
+
+$title = 'Products';
+$this->headTitle($title);
+
+?>
+
+<h1><?php /*echo $this->escapeHtml($title); */?></h1>
+
+
+    <?php foreach ($products as $product) { ?>
+
+        <tr>
+
+            <td>
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                            <div class="col-md-4">
+                                <a href="<?php echo $this->url('product', array('action'=>'view' , 'id'=> $product->product_id)); ?>">
+                                    <img src="<?php echo $this->escapeHtml($product->product_thumbnail);?>" alt="">
+                                </a>
+                            </div>
+
+                            <div class="col-md-8">
+                                <ul style="list-style: none;">
+                                <li><label>Product Name : </label><?php echo $this->escapeHtml($product->product_name);?></li>
+                                <li><label>Product Description : </label><?php echo $this->escapeHtml($product->product_desc);?></li>
+                                    <br><br><br>
+                                <li><label>Price : </label>$ <?php echo $this->escapeHtml($product->price);?></li>
+                                </ul>
+                            </div>
+
+                    </div>
+<?php }?>
+
+
+                </div>
+            </td>
+
+        </tr>

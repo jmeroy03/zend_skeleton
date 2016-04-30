@@ -1,0 +1,33 @@
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="col-md-4">
+            <img src="/<?php echo $this->escapeHtml($products->product_thumbnail);?>">
+        </div>
+
+        <div class="col-md-8">
+            <ul style="list-style: none;">
+                <li>
+                    <label>Product Name : </label><?php echo $this->escapeHtml($products->product_name);?></li>
+                <li><label>Product Description : </label><?php echo $this->escapeHtml($products->product_desc);?></li>
+                <br><br><br>
+                <li>
+                    <label>Unit Price : </label>$ <?php echo $this->escapeHtml($products->price);?>
+
+                </li>
+                <li>
+                    <label>Quantity : </label>
+                </li>
+                <li>
+                    <div class="col-xs-2">
+                        <input class="form-control" type="text">
+                    </div>
+                </li>
+                <li>
+                    <label>Price : $</label>
+                </li>
+
+            </ul>
+        </div>
+
+    </div>
+</div>
