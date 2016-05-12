@@ -15,7 +15,7 @@ class ProductTable
     
     public function fetchAll()
     {
-        echo 'asdsa';
+
         $resultSet = $this->tableGateway->select();
         return $resultSet;
     }

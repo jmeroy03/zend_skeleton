@@ -1,0 +1,31 @@
+<?php
+// module/Album/view/album/album/register.phtml:
+
+$title = 'Register';
+$this->headTitle($title);
+?>
+    <h1><?php echo $this->escapeHtml($title); ?></h1>
+
+
+<?php
+
+$register->setAttribute('action', $this->url('customer', array('action' => 'register')));
+
+
+$register->prepare();
+echo $this->form()->openTag($register);
+echo $this->formHidden($register->get('customer_id'));
+echo $this->formRow($register->get('email'));
+echo '<br>';
+echo $this->formRow($register->get('password'));
+echo '<br>';
+/*echo $this->formRow($form->get('confirmpassword'));*/
+echo $this->formRow($register->get('company_name'));
+echo '<br>';
+echo $this->formRow($register->get('first_name'));
+echo '<br>';
+echo $this->formRow($register->get('last_name'));
+echo '<br>';
+echo $this->formSubmit($register->get('register'));
+echo $this->form()->closeTag();
+

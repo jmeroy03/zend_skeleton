@@ -12,6 +12,7 @@ namespace Product\Model;
 class Product
 {
 
+   
     public $product_id;
     public $product_name;
     public $product_desc;

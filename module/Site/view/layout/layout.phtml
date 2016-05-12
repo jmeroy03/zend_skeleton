@@ -20,6 +20,9 @@
     <?php echo $this->headScript()
         ->prependFile($this->basePath('js/bootstrap.min.js'))
         ->prependFile($this->basePath('js/jquery.min.js'))
+        ->prependFile($this->basePath('js/product.js'))
+
+        //->prependFile($this->basePath('js/jquery-1.12.3.min.js'))
         ->prependFile($this->basePath('js/respond.min.js'), 'text/javascript', array('conditional' => 'lt IE 9',))
         ->prependFile($this->basePath('js/html5shiv.min.js'),   'text/javascript', array('conditional' => 'lt IE 9',))
     ; ?>
@@ -38,12 +41,15 @@
         </div>
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li class="" ><a href="<?php echo $this->url('home') ?>"><?php echo $this->translate('Login') ?></a></li>
-                <li><label >||</label></li>
-                <li class="" ><a href="<?php echo $this->url('home') ?>"><?php echo $this->translate('Cart') ?></a></li>
+                <?php if (!isset($this->layout()->first_name)) { ?>
+                    <a href="/customer">Login</a> | <a href="/cart">Cart</a>
+                <?php } else { ?>
+                    <strong>Welcome <?php echo $first_name ?>!</strong> <a href="/customer/logout">Logout</a> | <a href="/cart">Cart</a>
+                <?php } ?>
             </ul>
-        </div><!--/.nav-collapse -->
+        </div>
     </div>
+
 </nav>
 <div class="container">
     <?php echo $this->content; ?>

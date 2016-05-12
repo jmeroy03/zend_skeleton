@@ -1,0 +1,30 @@
+<?php
+// module/Album/view/album/album/add.phtml:
+
+$title = 'Login';
+$this->headTitle($title);
+?>
+    <h1><?php echo $this->escapeHtml($title); ?></h1>
+
+<p>
+    <a href="<?php echo $this->url('customer', array('action'=>'register'));?>">Sign up</a>
+
+</p>
+<?php
+$form->setAttribute('action', $this->url('customer', array('action' => 'login')));
+
+$form->prepare();
+echo $this->form()->openTag($form);
+echo $this->formHidden($form->get('id'));
+echo $this->formRow($form->get('email'));
+echo '<br>';
+echo $this->formRow($form->get('password'));
+echo '<br>';
+echo '<br>';
+echo $this->formSubmit($form->get('submit'));
+echo $this->form()->closeTag();
+
+
+
+
+

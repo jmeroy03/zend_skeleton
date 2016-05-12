@@ -1,0 +1,65 @@
+<?php
+
+$title = 'Cart';
+$this->headTitle($title);
+
+?>
+<div class="panel panel-default">
+
+<?php foreach ($item as $cart) { ?>
+
+    <div class="panel panel-primary">
+
+        <div class="panel panel-body">
+            <tr>
+                <td>
+
+                        <div class="col-md-4">
+                        <a href="">
+                            <img src="<?php echo $this->escapeHtml($cart->product_thumbnail);?>" alt="">
+                        </a>
+                        </div>
+                </td>
+                <td>
+                    <div class="col-md-4">
+                        <ul style="list-style: none;">
+                            <li><?php echo $this->escapeHtml($cart->product_name);?></li>
+                            <li><?php echo $this->escapeHtml($cart->product_desc);?></li>
+                            <br><br><br>
+                            <li>$ <?php echo $this->escapeHtml($cart->unit_price);?> <label> each</label></li>
+                        </ul>
+                    </div>
+                </td>
+
+                <td>
+                    <div class="col-md-2">
+                    <?php echo $cart->qty; ?>
+                    </div>
+                </td>
+
+                <td>
+                    <div class="col-md-2">
+                    <?php echo $cart->price; ?>
+                    </div>
+                </td>
+            </tr>
+        </div>
+
+  </div>
+
+
+    <?php }?>
+
+
+<div class="col-md-3 pull-right">
+    <ul style="list-style: none;" >
+        <li><label> Subtotal: $</label> <?php echo $subtotal; ?> </li>
+        <li><label> Shipping: $</label></li>
+        <li> <label style="color: #953b39"> Grandtotal: $<?php echo $subtotal; ?></label></li>
+
+        <button type="submit" class="btn-default">Checkout</button>
+    </ul>
+</div>
+
+
+    </div>

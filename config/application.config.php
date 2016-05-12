@@ -69,7 +69,9 @@ return array(
      'modules' => array(
        //  'Application',
         // 'Album',                  // <-- Add this line
+         'Customer',
          'Product',
+         'Cart',
         'Site',
          //'Products',
      ),

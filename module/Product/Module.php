@@ -7,6 +7,7 @@ use Product\Model\Product;
 use Product\Model\ProductTable;
 use Zend\Db\ResultSet\ResultSet;
 use Zend\Db\TableGateway\TableGateway;
+use Zend\Session\Container;
 
 class Module
 {
@@ -46,8 +47,12 @@ class Module
                 },
                 'ProductForm' => function() {
                     return new ProductForm();
+                },
+                'Container' => function () {
+                    return new Container();
                 }
-                
+
+
             )
         );
     }

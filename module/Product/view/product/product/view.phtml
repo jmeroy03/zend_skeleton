@@ -1,33 +1,89 @@
-<div class="panel panel-default">
+<div class="panel panel-default" >
     <div class="panel-body">
         <div class="col-md-4">
             <img src="/<?php echo $this->escapeHtml($products->product_thumbnail);?>">
         </div>
 
+
         <div class="col-md-8">
-            <ul style="list-style: none;">
-                <li>
-                    <label>Product Name : </label><?php echo $this->escapeHtml($products->product_name);?></li>
-                <li><label>Product Description : </label><?php echo $this->escapeHtml($products->product_desc);?></li>
-                <br><br><br>
-                <li>
-                    <label>Unit Price : </label>$ <?php echo $this->escapeHtml($products->price);?>
+            <form method="post" action="/cart/addToCart" name="form" id="form">
+                <span style="display: none" id="weight" name="weight"><?php echo $this->escapeHtml($products->weight); ?></span>
+                <ul style="list-style: none;">
+                    <li>
+                        <label>Product Name : </label>
+                        <span id><?php echo $this->escapeHtml($products->product_name);?></span>
+                    </li>
+                    <li>
+                        <label>Product Description :</label>
+                        <span> <?php echo $this->escapeHtml($products->product_desc);?></span>
+                    </li>
+                    <br>
+                    <br>
+                    <br>
+                    <li >
+                        <label>Unit Price :$ </label>
+                        <span id="price" name="price"><?php echo $products->price ?></span>
+                    </li>
 
-                </li>
-                <li>
-                    <label>Quantity : </label>
-                </li>
-                <li>
-                    <div class="col-xs-2">
-                        <input class="form-control" type="text">
-                    </div>
-                </li>
-                <li>
-                    <label>Price : $</label>
-                </li>
+                    <li>
+                        <div class="row">
+                            <div class="col-xs-2">
+                                <label>Quantity : </label>
+                            </div>
 
-            </ul>
+                            <div class="col-xs-2">
+                                <div class="pull-right">
+                                    <input class="form-control"  id="input" name ="input" type="text"  value="1"  />
+                                </div>
+                            </div>
+
+                        </div>
+                    </li>
+                    <li>
+                        <label>Price : $</label>
+                        <span id="totalprice"></span>
+                    </li>
+
+                    <li>
+                        <button type="submit" class="btn btn-primary btn-sm" id="" name="btnAddCart">Add To Cart</button>
+                    </li>
+                </ul>
+
+                <input type="hidden" id="hiddenProdID" name="hiddenProdID" value="<?php echo $products->product_id ?>"/>
+                <input type="hidden" id="hiddenName" name="hiddenName" value="<?php echo $products->product_name ?>"/>
+                <input type="hidden" id="hiddenDesc" name="hiddenDesc" value="<?php echo $products->product_desc ?>"/>
+                <input type="hidden" id="hiddenUnitPrice" name="hiddenUnitPrice" value="<?php echo $products->price ?>"/>
+                <input type="hidden" id="hiddenWeight" name="hiddenWeight"/>
+                <input type="hidden" id="hiddenQty" name="hiddenQty"/>
+                <input type="hidden" id="hiddenPrice" name="hiddenPrice"/>
+
+            </form>
         </div>
 
     </div>
 </div>
+
+
+<script  type="text/javascript">
+
+    $(document).ready(function() {
+        $('#input').on('keyup blur', function(){
+            var weight =  $('#weight').text();
+            var inputQuantity =$('#input').val();
+            var price =$('#price').text();
+            var tempPrice = inputQuantity * price;
+            var totalWeight = weight * inputQuantity;
+            $('#totalprice').text((tempPrice).toFixed(2));
+            $('#hiddenPrice').val((tempPrice).toFixed(2));
+            $('#hiddenWeight').val((totalWeight).toFixed(2));
+            $('#hiddenQty').val(inputQuantity);
+
+        });
+    });
+
+
+
+
+
+
+</script>
